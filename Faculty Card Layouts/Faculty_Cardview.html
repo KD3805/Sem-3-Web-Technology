@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Faculty Card View</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="fac.css">
+  </head>
+  <body>
+
+	<script>
+		a = [
+				{
+					id: 1,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/5---29-04-2023-11-00-29.jpg",
+					name: "Dr. Gopi Sanghani",
+					designation: "Dean - School of Computer Science",
+					education: "Ph.D. , M.E. (CE)",
+					experience: "22+ Years",
+					joiningyear: "Jul-2012"
+
+				},
+				{
+					id: 2,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/3---28-04-2023-02-02-42.jpg",
+					name: "Dr. Nilesh Gambhava",
+					designation: "Professor",
+					education: "Ph.D. , M.E. (CE)",
+					experience: "20+ Years",
+					joiningyear: "Jul-2009"
+
+				},
+				{
+					id: 3,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/6---28-04-2023-02-06-07.jpg",
+					name: "Dr. Pradyumansinh Jadeja",
+					designation: "Professor",
+					education: "Ph.D., M.E. (CE)",
+					experience: "17+ Years",
+					joiningyear: "Jul-2009"
+				},
+				{
+					id: 4,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/8---28-04-2023-02-06-25.jpg",
+					name: "Prof. Maulik Trivedi",
+					designation: "Assistant Professor",
+					education: "Ph.D.(Pursuing), M.Tech.(CSE)",
+					experience: "15+ Years",
+					joiningyear: "Jun-2009"
+				},
+				{
+					id: 5,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/9---28-04-2023-02-06-37.jpg",
+					name: "Prof. Dixita Kagathara",
+					designation: "Assistant Professor",
+					education: "M.Tech. (Web Technology)",
+					experience: "13+ Years",
+					joiningyear: "Jul-2009"
+				},
+				{
+					id: 6,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/12---28-04-2023-02-06-51.jpg",
+					name: "Prof. Firoz Sherasiya",
+					designation: "Assistant Professor",
+					education: "Ph.D.(Pursuing), M.E. (CE)",
+					experience: "17+ Years",
+					joiningyear: "Jul-2011"
+				},
+				{
+					id: 7,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/10---28-04-2023-02-07-03.jpg",
+					name: "Prof. Rupesh Vaishnav",
+					designation: "Assistant Professor",
+					education: "Ph.D. (Pursuing), M.E. (CE)",
+					experience: "15+ Years",
+					joiningyear: "May-2013"
+				},
+				{
+					id: 8,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/11---29-04-2023-01-44-21.jpg",
+					name: "Prof. Swati Sharma",
+					designation: "Assistant Professor",
+					education: "M.Tech. (CSE)",
+					experience: "15+ Years",
+					joiningyear: "May-2013"
+				},
+				{
+					id: 9,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/15---28-04-2023-02-07-35.jpg",
+					name: "Prof. Arjun Bala",
+					designation: "Assistant Professor",
+					education: "Ph.D.(Pursuing), M.Tech.(CSE)",
+					experience: "13+ Years",
+					joiningyear: "Jul-2013"
+				},
+				{
+					id: 10,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/13---28-04-2023-02-07-48.jpg",
+					name: "Prof. Mayur Padia",
+					designation: "Assistant Professor",
+					education: "M.E. (CE)",
+					experience: "14+ Years",
+					joiningyear: "Jul-2011"
+				},
+				{
+					id: 11,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/16---28-04-2023-02-08-00.jpg",
+					name: "Prof. Vijay Shekhat",
+					designation: "Assistant Professor",
+					education: "M.E. (CE)",
+					experience: "11+ Years",
+					joiningyear: "Jun-2012"
+				},
+				{
+					id: 12,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/220---28-04-2023-02-08-14.jpg",
+					name: "Prof. Ashok Badresiya",
+					designation: "Assistant Professor",
+					education: "M.E. (CE)",
+					experience: "9+ Years",
+					joiningyear: "Jul-2015"
+				},
+				{
+					id: 13,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/214---28-04-2023-02-08-35.jpg",
+					name: "Prof. Naimish Vadodariya",
+					designation: "Assistant Professor",
+					education: "Ph.D. (Pursuing), M.E. (CE)",
+					experience: "10+ Years",
+					joiningyear:  "Jun-2015"
+				},
+				{
+					id: 14,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/221---28-04-2023-02-08-50.jpg",
+					name: "Prof. UmeshKumar Thoriya",
+					designation: "Assistant Professor",
+					education: "M.Tech. (CSE)",
+					experience: "10+ Years",
+					joiningyear: "Jul-2015"
+				},
+				{
+					id: 15,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/219---28-04-2023-02-09-01.jpg",
+					name: "Prof. Jayesh Vagadiya",
+					designation: "Assistant Professor",
+					education: "M.E (CE)",
+					experience: "7+ Years",
+					joiningyear: "Jul-2015"
+				},
+				{
+					id: 16,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/46---28-04-2023-02-09-28.jpg",
+					name: "Prof. Jay Dhamsaniya",
+					designation: "Assistant Professor",
+					education: "PG Diploma (Software Development), B.Tech. (E.C.)",
+					experience: "10+ Years",
+					joiningyear: "Jul-2012"
+				},
+				{
+					id: 17,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/294---28-04-2023-02-09-43.jpg",
+					name: "Prof. Mehul Bhundiya",
+					designation: "Assistant Professor",
+					education: "BE (CE), ME (CE)",
+					experience: "9+ Years",
+					joiningyear: "Aug-2018"
+				},
+				{
+					id: 18,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/317---28-04-2023-01-32-29.jpg",
+					name: "Prof. Vaseem Ghada",
+					designation: "Assistant Professor",
+					education: "Ph.D. (Pursuing), M.Tech (ICT)",
+					experience: "13+ Years",
+					joiningyear: "Aug-2021"
+				},
+				{
+					id: 19,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/328---28-04-2023-01-33-05.jpg",
+					name: "Prof. Hemang Chath",
+					designation: "Assistant Professor",
+					education: "BE(CE), ME(CE - Pursuing)",
+					experience: "12+ Years",
+					joiningyear: "Sep-2021"
+				},
+				{
+					id: 20,
+					avatar: "https://darshan.ac.in/U01/Faculty-Photo/330---28-04-2023-01-33-25.jpg",
+					name: "Prof. Charvin Kothia",
+					designation: "Assistant Professor",
+					education: "B.E. [CE], M.Tech. [Software] (Pursuing)",
+					experience: "3+ Years",
+					joiningyear: "Nov-2020"
+				}
+
+			];
+	</script>
+
+	<div class="faculty-section">
+		<h1 class="text-danger">Faculty</h1>
+		<div class="container">
+			<div class="row">
+			
+				<script>
+					for(fac in a) {
+						document.write('<div class="faculty-items col-3 card" >')
+							document.write('<img src="'+a[fac].avatar+'" class="card-img-top" alt="...">')
+
+							document.write('<div class="card-body">')
+
+								document.write('<h3 class="card-title">'+a[fac].name+'</h3>')
+								document.write('<h6 class="card-subtitle mb-2 text-danger">'+a[fac].designation+'</h6>')
+								
+								document.write('<span class="card-text">'+a[fac].education+'</span>')
+
+								//grid system for card-data
+								document.write('<div class="container1 text-center">')
+									document.write('<div class="row">')
+										document.write('<div class="col">')
+											document.write('<div class="card-data1">Experience</div>')
+											document.write('</div>')
+											document.write('<div class="col">')
+											document.write('<div class="card-data2">Working Since</div>')
+											document.write('</div>')
+									document.write('</div>')
+								document.write('</div>')
+								
+								//grid system for exp-btn & date-btn
+								document.write('<div class="container1 text-center">')
+									document.write('<div class="row">')
+										document.write('<div class="col">')
+											document.write('<button class="exp-btn">'+a[fac].experience+'</button>')
+											document.write('</div>')
+											document.write('<div class="col">')
+											document.write('<button class="date-btn">'+a[fac].joiningyear+'</button>')
+											document.write('</div>')
+									document.write('</div>')
+								document.write('</div>')
+
+								document.write('<a href="#" class="text-secondary profile"><span>View Profile&rarr;</span></a>')
+
+							document.write('</div>')
+
+						document.write('</div>')
+					}
+				</script>
+			</div>
+		</div>
+		
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+

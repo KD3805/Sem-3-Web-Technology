@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>
+                Regestration Form
+            </h2>
+        </div>
+
+        <form class="form" id="form" >
+            <div class="form-control">
+                <label for="username"> Username </label>
+                <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small id="errorMsg">Error Msg</small>
+            </div>
+
+            <div class="form-control">
+                <label for="bdate"> Birth Date </label>
+                <input type="date" id="bdate" placeholder="Enter your birth date" autocomplete="off">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+
+            <div class="form-control">
+                <label for="email"> Email </label>
+                <input type="email" id="email" placeholder="Enter your Email" autocomplete="off" required>
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+
+            <div class="form-control">
+                <label for="password"> Password </label>
+                <input type="password" id="password" placeholder="Enter your Password" autocomplete="off">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+
+            <div class="form-control">
+                <label for="cpassword"> Confirm Password </label>
+                <input type="password" id="cpassword" placeholder="Enter your password again" autocomplete="off">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+
+            <div class="form-control">
+                <label for="enroll"> Enrollment Number </label>
+                <input type="text" id="enroll" placeholder="Enter your enrollment number" autocomplete="off">
+                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>Error Msg</small>
+            </div>
+
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const form = document.getElementById('form');
+        const username = document.getElementById('username');
+        const bdate = document.getElementById('bdate');
+
+        // this will prevent user to select future dates
+        bdate.max = new Date().toISOString().split("T")[0]; 
+
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const cpassword = document.getElementById('cpassword');
+        const enroll = document.getElementById('enroll');
+
+        // const nameVal = username.value;
+        // const emailVal = email.value;
+        // const passwordVal = password.value;
+        // const cpasswordVal = cpassword.value;
+        // const enrollVal = enroll.value;
+
+        // Submit Message
+        const successMsg = (sRate, count)=>{
+            if(sRate === count){
+                Swal.fire(
+                'Good job!',
+                'Form Submited Successfully',
+                'success'
+                )
+            }
+        }
+
+        // Check for Submit Success
+        const submitSuccess = ()=>{
+            let formCon = document.getElementsByClassName('form-control');
+            var count = formCon.length - 1;
+
+            for(i=0; i<formCon.length; i++){
+                if(formCon[i].className == "form-control success"){
+                    var sRate = 0 + i;
+                    console.log(sRate);
+                    successMsg(sRate, count);
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+
+        // All EventListners
+
+        form.addEventListener("submit", (event) =>{
+            event.preventDefault();
+            calculateAge();
+            unValidation();
+            emailValidation();
+            passwordValidation();
+            cpasswordValidation();
+            enrollValidation();
+            submitSuccess();
+        })
+
+        username.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            unValidation();
+        })
+
+        email.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            emailValidation();
+        })
+
+        password.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            passwordValidation();
+        })
+
+        cpassword.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            cpasswordValidation();
+        })
+
+        enroll.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            enrollValidation();
+        })
+
+        bdate.addEventListener('blur', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+            if(calculateAge() < 18){
+                setErrorMsg(bdate, "Age must be greater than 18");
+            } 
+            if(calculateAge() >= 18){
+                setSuccessMsg(bdate);
+            }
+            validation();
+        })
+
+        function unValidation(){
+            // username validation
+            var p1 = "\\w{8,}";
+            var r1 = new RegExp(p1)
+
+            if(username.value.length == 0){
+                setErrorMsg(username, "Please enter username");
+            }
+            else if(r1.test(username.value)){
+               setSuccessMsg(username);
+            }
+            else{
+                setErrorMsg(username, "Username must be of minimum 8 characters");
+            }
+        }
+
+        function emailValidation(){
+            // email validation
+            var p2 = "^[\\w-\.]*[\\w-_\.]\@[\\w]\.*[\\w]*[\\w]$";
+            var r2 = new RegExp(p2);
+
+            if(email.value.length == 0){
+                setErrorMsg(email, "Please enter email");
+            }
+            else if(r2.test(email.value)){
+               setSuccessMsg(email);
+            }
+            else{
+                setErrorMsg(email, "Please check email format");
+            }
+        }
+
+        function passwordValidation(){
+            // password validation
+            var p3 = "^\\d{8,}$";
+            var r3 = new RegExp(p3);
+
+            if(password.value.length == 0){
+                setErrorMsg(password, "Please enter password");
+            }
+            else if(r3.test(password.value)){
+               setSuccessMsg(password);
+            }
+            else{
+                setErrorMsg(password, "Password must be of minimum 8 digits");
+            }
+        }
+
+        function cpasswordValidation(){
+            // confirm password validation
+            if(cpassword.value.length == 0){
+                setErrorMsg(cpassword, "Please enter confirm password");
+            }
+            else if(password.value != cpassword.value){
+                setErrorMsg(cpassword, "Password are not matching");
+            }
+            else{
+                setSuccessMsg(cpassword);
+            }
+        }
+
+        function enrollValidation(){
+             // enrollment no. validation
+             var p4 = "^[0-9]{2}0[12]0101[0-9]{3}";
+            var r4 = new RegExp(p4);
+
+            if(enroll.value.length == 0){
+                setErrorMsg(enroll, "Please enter enrollment number");
+            }
+            else if(r4.test(enroll.value)){
+               setSuccessMsg(enroll);
+            }
+            else{
+                setErrorMsg(enroll, "Enrollment no. must be in proper format");
+            }
+        }
+
+        // Calculate age
+        const calculateAge = ()=>{
+            if(bdate.value == ""){
+                setErrorMsg(bdate, "Please select birth date");
+            }
+            console.log(typeof(bdate.value))
+            let birthdate = new Date(bdate.value);
+
+            let d1 = birthdate.getDate();
+            let m1 = birthdate.getMonth() + 1;
+            let y1 = birthdate.getFullYear();
+
+            let today = new Date();
+
+            let d2 = today.getDate();
+            let m2 = today.getMonth() + 1;
+            let y2 = today.getFullYear();
+
+            let d3, m3, y3;
+
+            y3 = y2 - y1;
+            console.log(y3);
+
+            if(m2 >= m1){
+                m3 = m2 - m1;
+            } else{
+                y3--;
+                m3 = 12 + m2 - m1;
+            }
+
+            if(d2 >= d1){
+                d3 = d2 - d1;            
+            } else{
+                m3--;
+                d3 = getDaysInMonth(y1, m1) + d2 - d1;
+            }
+
+            if(m3 < 0){
+                m3 = 11;
+                y3--;
+            }
+            console.log(y3, m3, d3);
+            return y3;
+        }
+
+        function getDaysInMonth(year, month){
+            return new Date(year, month, 0).getDate();
+        }
+
+        // If Error occurs
+        function setErrorMsg(input, errorMsg){
+            // const fontControl = username.parentElement;
+            // const error = fontControl.querySelector('small');
+            // formControl.className = "form-control error";
+            // error.innerHTML = errorMsg;
+            
+            input.parentElement.className = "form-control error";
+            input.parentElement.querySelector('small').innerHTML = errorMsg;
+
+        }
+
+        // If success
+        function setSuccessMsg(input){
+            input.parentElement.className = "form-control success";
+        }
+    </script>
+</body>
+</html>

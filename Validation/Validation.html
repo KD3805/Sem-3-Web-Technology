@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="form">
+		<table>
+			<tbody>
+                <tr>
+                    <td> User Name </td>
+                    <td> : </td>
+                    <td>
+                        <input type="text" name="userName" id="userName" placeholder="Type Username">
+                        <span id="errorMsg"></span>
+                    </td>
+			    </tr>
+
+                <tr>
+                    <td> Password </td>
+                    <td> : </td>
+                    <td>
+                        <input type="text" name="password" id="password" placeholder="Type Password">
+                        <span id="errorMsg"></span>
+                    </td>
+			    </tr>
+
+           </tbody>
+        </table>
+    </form> 
+    
+    <br><br>
+    <input type="submit" value="check" onclick="checkData()">
+
+    <script>
+        var tName;
+        un = document.getElementById('userName').value;
+        form = document.getElementById('form');
+        username = document.getElementById('userName');
+        function checkData(){
+            
+
+            if(un.length == 0){
+                document.getElementById('errorMsg').innerHTML = "Please Enter Data";
+            }
+
+            var pattern = "\\w{8,}"
+            var r = new RegExp(pattern)
+
+            if(r.test(un)){
+                document.getElementById('errorMsg').innerHTML = "Invalid Format";
+                document.getElementById('userName').style.border = "5px solid blue";
+            }
+            else{
+                document.getElementById('errorMsg').innerHTML = "Invalid Format";
+                document.getElementById("userName").style.border = "5px solid red";
+            }
+        }
+
+        username.addEventListener('submit', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+        })
+
+        username.addEventListener('change', (event)=>{
+            console.log(event.type)
+            event.preventDefault();
+        })
+    </script>
+</body>
+</html>

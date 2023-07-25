@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nanuDiv{
+            width: 100px;
+            height: 100px;
+            z-index: 2;
+            background-color: aqua;
+        }
+        #motuDiv{
+            width: 200px;
+            height: 200px;
+            z-index: 0;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="click here" id="myBtn">
+    <div id="motuDiv">
+        <div id="nanuDiv"></div>
+    </div>
+    
+
+</body>
+<script>
+    btn = document.getElementById('myBtn')
+    myMotuDiv = document.getElementById('motuDiv')
+    myNanuDiv = document.getElementById('nanuDiv')
+
+    btn.addEventListener("dblclick", (e)=>{
+        console.log("Button Double Clicked")
+    })
+
+    btn.addEventListener("mouseup", (e)=>{
+        console.log("Button released")
+        document.body.style.background = "black";
+    })
+
+    btn.addEventListener("mousedown", (e)=>{
+        console.log("Button pressed")
+    })
+
+    btn.addEventListener("mouseover", (e)=>{
+        console.log("Button overr")
+    })
+
+    btn.addEventListener("mouseout", (e)=>{
+        console.log("Mouse out")
+    })
+
+    // btn.addEventListener("mousemove", (e)=>{
+    //     console.log("Mouse Move")
+    //     console.log(e.type)
+    // })
+
+    btn.addEventListener("contextmenu", (e)=>{
+        e.preventDefault()
+        console.log(e.type)
+    })
+
+    myMotuDiv.addEventListener("mouseenter", (e)=>{
+        console.log("Mouse Entered in Div")
+    }) 
+    
+    myMotuDiv.addEventListener("mouseleave", (e)=>{
+        console.log("Mouse Leave from Div")
+    })
+
+    btn.addEventListener("keydown", (e)=>{
+        console.log("Button Key Down")
+    })
+
+    btn.addEventListener("keypress", (e)=>{
+        console.log("Button Key Pressed",e)
+    })
+
+    btn.addEventListener("keyup", (e)=>{
+        console.log("Button Key Up",e)
+    })
+
+</script>
+</html>

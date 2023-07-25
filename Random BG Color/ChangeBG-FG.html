@@ -1,0 +1,58 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="Start BG" onclick="startBG()" name="">
+	<input type="button" value="Stop BG" onclick="stopBG()" name="">
+	<input type="button" value="Start FG" onclick="startFG()" name="">
+	<input type="button" value="Stop FG" onclick="stopFG()" name="">
+
+	<script type="text/javascript">
+		function changeBG() {
+			r = Math.ceil(Math.random()*255);
+			g = Math.ceil(Math.random()*255);
+			b = Math.ceil(Math.random()*255);
+
+			document.body.style.backgroundColor = "rgb("+r+","+g+","+b+")"
+		}
+
+		function startBG() {
+			c1 = setInterval(changeBG,200);
+		}
+
+		function stopBG() {
+			clearInterval(c1);
+		}
+
+	</script>
+
+	<script type="text/javascript">
+		function changeFG() {
+			r = Math.ceil(Math.random()*255);
+			g = Math.ceil(Math.random()*255);
+			b = Math.ceil(Math.random()*255);
+
+			document.getElementById("name").style.color = "rgb("+r+","+g+","+b+")"
+		}
+
+		function startFG() {
+			c2 = setInterval(changeFG,200);
+		}
+
+		function stopFG() {
+			clearInterval(c2);
+		}
+
+	</script>
+
+
+	<p id="name" style="font-size: 50px;">
+		It's Kishan Dabhi
+	</p>
+
+</body>
+</html>

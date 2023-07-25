@@ -1,0 +1,77 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SNIPER FURY</title>
+    <link rel="stylesheet" href="gmStyle.css">
+</head>
+<body >
+
+    <img src="img11.jpg" alt="" id="image" onclick = "gameOver()";>
+    <img src="target.jpg" id="target" onclick="scoreCounter()">
+
+    <button id="scoreBox">Score : 0</button>
+    <button id="lifeBox">Life : 10</button>
+
+    <!-- Title - SNIPER FURY -->
+    <a href="https://www.fontspace.com/category/gaming">
+        <img src="https://see.fontimg.com/api/renderfont4/MVdYB/eyJyIjoiZnMiLCJoIjo0NiwidyI6MTI1MCwiZnMiOjM3LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/U05JUFBFUiBGVVJZ/debug-free-trial.png" 
+        id="GamingFonts">
+    </a>
+
+	<script type="text/javascript">
+
+        let bgimg = document.getElementById('image');
+        let images = ['img11.jpg', 'img2.jpg', 'img3.jpg', 'img44.jpg']
+
+		let tr = document.getElementById('target');
+
+		function bgImage() {
+            let rnd = Math.floor(Math.random()*4);
+            bgimg.src = images[rnd];
+            bgimg.style.width = "100vw";
+            bgimg.style.height = "100vh";
+            bgimg.style.transitionDuration = "0.5s";
+
+        }
+
+        function changeTargetPosition() {
+            let x = Math.ceil(Math.random()*1200 )+100;
+            let y = Math.ceil(Math.random()*500 )+100;
+            tr.style.position = "absolute";
+            tr.style.left = x+"px";
+            tr.style.top = y+"px";
+            ctp = setInterval(changeTargetPosition, 2500);
+            clearInterval(ctp)
+        }
+
+        let sc = 0;
+        function scoreCounter(){
+            changeTargetPosition();
+            clearInterval(ctp)
+            sc++;
+            document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+        }
+
+        let life = 10;
+        function gameOver(){
+            life--;
+            document.getElementById('lifeBox').innerHTML = "Life: " + life; 
+            if(life<0){
+                alert('Oops...Game Over\nBetter Luck Next Time')
+                life = 10;
+                sc = 0;
+                document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+                document.getElementById('lifeBox').innerHTML = "Life: " + life; 
+
+            }
+        }
+
+        setTimeout(bgImage,0);
+        setInterval(bgImage,3000);
+        ctp = setInterval(changeTargetPosition, 2500);
+
+	</script>
+</body>
+</html>

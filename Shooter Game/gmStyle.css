@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+
+#image {
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#target{
+    width:60px; 
+    transition-duration: 1s; 
+    border-radius: 30px; 
+    position: absolute; 
+    top: 500px; 
+    left: 100px;
+}
+#scoreBox{
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(red,orange);
+    font-size: 15px;
+    letter-spacing: 0.5cqb;
+    text-indent: 1mm;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+}
+body a{
+    position: relative;
+    left: 37%;
+    top: 1%;
+}
+#GamingFonts{
+    background-size:  cover;
+    background-image: linear-gradient(red,orange);
+    border-radius: 10px;
+    height: 35px;
+    padding: 15px;
+}
+#lifeBox{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(red,orange);
+    font-size: 15px;
+    letter-spacing: 0.5cqb;
+    text-indent: 1mm;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+}

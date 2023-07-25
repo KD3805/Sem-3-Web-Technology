@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto';
+}
+
+body{
+    background: #8A2387;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    width: 40vw;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.header{
+    background-image: linear-gradient(to right, #DC2424 0%, #4A569D 51%, #DC2424 100%);
+    background-size: 200% auto;
+    padding: 30px 0px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    word-spacing: 0.3rem;
+}
+
+.btn {
+    background-image: linear-gradient(to right, #DC2424 0%, #4A569D 51%, #DC2424 100%);
+    background-size: 200% auto;
+    display: inline-block;
+    margin: 12px;
+    padding: 10px 10px;
+    width: 100px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .5s;
+    box-shadow: 0 0 20px #0c0a0aa1;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+#txt{
+    background: rgba(255, 255, 255, 0.5);
+    display: block;
+    margin: 25px auto;
+    padding: 10px;
+    position: relative;
+    width: 80%;
+    height: 5%;
+    border: none;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;
+}
+
+input[type=text]{
+    cursor: context-menu;
+}
+
+#calc {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    /* border-collapse: collapse; */
+    width: 100%;
+    margin: 25px auto 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+#calc td{
+    border: 2px solid #1506067b;
+    border-radius: 10px;
+    padding: 10px 30px;
+    cursor: context-menu;
+    /* border: none; */
+}
+  
+#calc tr td:nth-child(even){
+    background: rgba(255, 255, 255, 0.3);
+    height: 50px;
+    
+}
+
+#calc tr td:nth-child(odd){
+    font-size: large;
+    font-weight: 500;
+    text-align: center;
+}
+
+#calc tr td input{
+    background: rgba(255, 255, 255, 0);
+    height: 30px;
+    font-size: larger;
+    text-align: center;
+    border: none;
+}
+
+
+@media (max-width: 1250px){
+    .container{
+        width: 55vw;
+        max-width: 100%;
+    }
+    .btnDiv{
+        justify-content: space-evenly;
+    }
+}
+@media (max-width: 998px){
+    .container{
+        width: 65vw;
+        max-width: 100%;
+    }
+    .btnDiv{
+        justify-content: space-evenly;
+    }
+}
+@media (max-width: 998px){
+    .container{
+        width: 75vw;
+        max-width: 100%;
+    }
+    .btnDiv{
+        justify-content: space-evenly;
+    }
+}
+@media (max-width: 658px){
+    .container{
+        width: 85vw;
+        max-width: 100%;
+    }
+    .btnDiv{
+        justify-content: space-evenly;
+    }
+}
+@media (max-width: 568px){
+    .container{
+        width: 100vw;
+        /* max-width: 100%; */
+    }
+    .btnDiv{
+        justify-content: space-evenly;
+    }
+}

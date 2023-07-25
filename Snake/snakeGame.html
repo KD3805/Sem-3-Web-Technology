@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* .snakes{
+        width: 140px;
+        height: 58px;
+       } */
+
+       body{
+        background-image: url('https://wallpapers.com/images/hd/minimalist-razer-green-chroma-gdp0yzlhmkeqcv1z.jpg');
+        background-size: 100vw 100vh;
+       }
+       #mouse{
+           position: absolute;
+            /* width: 70px;
+            height: 32px; */
+       }
+       .snkR{
+           transform: rotateX(180deg);
+        }
+        img{
+            position: absolute;
+            left: 500px;
+            top: 100px;
+        }
+        #scoreBox{
+            position: absolute;
+            right: 1%;
+            top: 1%;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            background-image: linear-gradient(red,orange);
+            font-size: 15px;
+            letter-spacing: 0.5cqb;
+            text-indent: 1mm;
+            font-weight: bolder;
+            border: none;
+            border-radius: 5px;
+}
+       
+    </style>
+</head>
+<body onload="mousePossition()">
+    <img src="snakeR2.png" class="snakes" id="snk" style="transform : rotateX(180deg);">
+    <img src="mouse2.png" id="mouse">
+
+     <!-- Title - Snake Mania -->
+     
+
+
+    <button id="scoreBox">Score : 0</button>
+    
+    <script type="text/javascript">
+            snakeL = 500;
+            snakeT = 100;
+            rightInt = 0;
+            leftInt = 0;
+            topInt = 0;
+            bottomInt = 0;
+            speed = 1;
+
+            // Left Right
+            function moveLeft(){
+                snakeL--;
+                speed -= 0.2
+                checkKhavaiGyu();
+                i = document.getElementById("snk");
+                
+                if(snakeL<=0){
+                    alert('Oops...Game Over\nBetter Luck Next Time')
+                    sc = 0;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc;
+                    snakeL = 500;
+                    snakeT = 100;
+                    i.src = "snakeR2.png";
+                    clearInterval(rightInt);
+                    clearInterval(leftInt);
+                    clearInterval(topInt);
+                    clearInterval(bottomInt);
+                }
+                i.style.left = snakeL +"px";
+                i.src = "snakeL2.png";
+                i.style.transform = "rotateX(0deg)";
+                
+            }
+
+            function moveRight(){
+                snakeL++;
+                speed -= 0.2
+                checkKhavaiGyu();
+                i = document.getElementById("snk");
+                
+                if(snakeL>=screen.availWidth){
+                    alert('Oops...Game Over\nBetter Luck Next Time')
+                    sc = 0;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc;
+                    snakeL = 500;
+                    snakeT = 100;
+                    i.src = "snakeR2.png";
+                    clearInterval(rightInt);
+                    clearInterval(leftInt);
+                    clearInterval(topInt);
+                    clearInterval(bottomInt);
+                }
+                i.style.left = snakeL + "px";
+                i.src = "snakeR2.png";
+                i.style.transform = "rotateX(180deg)";
+                
+            }
+
+            function startLeft(){
+                clearInterval(rightInt);
+                clearInterval(leftInt);
+                clearInterval(topInt);
+                clearInterval(bottomInt);
+                leftInt = setInterval(moveLeft,speed);
+            }
+
+            function startRight(){
+                clearInterval(leftInt);
+                clearInterval(rightInt);
+                clearInterval(topInt);
+                clearInterval(bottomInt);
+                rightInt = setInterval(moveRight,speed);
+            }
+
+            // Top Bottom
+            function moveTop(){
+                snakeT--;
+                speed -= 0.2
+                checkKhavaiGyu();
+                i = document.getElementById("snk");
+                
+                if(snakeT<=0){
+                    alert('Oops...Game Over\nBetter Luck Next Time')
+                    sc = 0;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc;
+                    snakeL = 500;
+                    snakeT = 100;
+                    i.src = "snakeR2.png";
+                    clearInterval(rightInt);
+                    clearInterval(leftInt);
+                    clearInterval(topInt);
+                    clearInterval(bottomInt);
+                }
+                i.style.top = snakeT +"px";
+                i.src = "snakeT2.png";
+                i.style.transform = "rotateX(0deg)";
+                
+            }
+
+            function moveBottom(){
+                snakeT++;
+                speed -= 0.2
+                checkKhavaiGyu();
+                i= document.getElementById("snk");
+                
+                if(snakeT>=screen.availHeight){
+                    alert('Oops...Game Over\nBetter Luck Next Time')
+                    sc = 0;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc;
+                    snakeL = 500;
+                    snakeT = 100;
+                    i.src = "snakeR2.png";
+                    clearInterval(rightInt);
+                    clearInterval(leftInt);
+                    clearInterval(topInt);
+                    clearInterval(bottomInt);
+                }
+                i.style.top = snakeT + "px";
+                i.src = "snakeB2.png";
+                i.style.transform = "rotateX(0deg)";
+            }
+
+            function startTop(){
+                clearInterval(rightInt);
+                clearInterval(leftInt);
+                clearInterval(topInt);
+                clearInterval(bottomInt);
+                topInt = setInterval(moveTop,speed);
+            }
+
+            function startBottom(){
+                clearInterval(leftInt);
+                clearInterval(rightInt);
+                clearInterval(topInt);
+                clearInterval(bottomInt);
+                bottomInt = setInterval(moveBottom,speed);
+            }
+
+            function mousePossition(){
+                mouseL = Math.ceil(Math.random()*(screen.availWidth-100));
+                mouseT = Math.ceil(Math.random()*(screen.availHeight-100));
+                m = document.getElementById('mouse');
+                m.style.left = mouseL+"px";
+                m.style.top = mouseT+"px";
+            }
+
+            let sc = 0;
+            function checkKhavaiGyu(){
+                if(mouseL < snakeL && snakeL < (mouseL + 100) && mouseT < snakeT && snakeT < (mouseT + 100)){
+                    mousePossition();
+                    sc++;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+                }
+                else if(mouseL < snakeL && snakeL < (mouseL + 100) && mouseT < (snakeT + 100) && (snakeT + 100) < (mouseT + 100)){
+                    mousePossition();
+                    sc++;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+                }
+                else if(mouseL < (snakeL + 100) && (snakeL + 100) < (mouseL + 100) && mouseT < (snakeT + 100) && (snakeT + 100) < (mouseT + 100)){
+                    mousePossition();
+                    sc++;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+                }
+                else if(mouseL < (snakeT + 100) && (snakeT + 100) < (mouseL + 100) && mouseT < snakeT && snakeT < (mouseT + 100)){
+                    mousePossition();
+                    sc++;
+                    document.getElementById('scoreBox').innerHTML = "Score: " + sc; 
+                }
+                
+
+            }
+
+            window.addEventListener('keydown', e =>{
+            switch (e.key) {
+                case "ArrowUp":
+                    startTop();
+                    break;
+
+                case "ArrowDown":
+                    startBottom();
+                    break;
+
+                case "ArrowLeft":
+                    startLeft();
+                    break;
+
+                case "ArrowRight":
+                    startRight();
+                    break;
+                default:
+                    break;
+            }
+
+        });
+            // setInterval(mousePossition,1000)
+
+    </script>
+
+
+</body>
+</html>

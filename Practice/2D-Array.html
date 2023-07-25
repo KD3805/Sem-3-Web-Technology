@@ -1,0 +1,30 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS Table</title>
+</head>
+<body>
+	<script type="text/javascript">
+		arr = [
+			["Kishan", 405, "https://e0.pxfuel.com/wallpapers/58/463/desktop-wallpaper-naruto-top-best-ultra-naruto-background-naruto-phone.jpg"],
+
+			["Parth", 403, "https://www.bhmpics.com/downloads/sasuke-uchiha-wallpapers-hd-/23.screen-1.jpg.webp"]
+
+			];
+
+		document.write("<table border=1>");
+
+		for(temp of arr) {
+			document.write("<tr>");
+			document.write("<td>"+temp[0]+"</td>");
+			document.write("<td>"+temp[1]+"</td>");
+			document.write("<td>" + '<img src= "'+temp[2]+'" width = 200px >' + "</td>");
+			document.write("</tr>");
+		}
+
+		document.write("</table>");
+	</script>
+</body>
+</html>

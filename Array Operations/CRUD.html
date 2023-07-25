@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="box-sizing: border-box;">
+    <div class="container">
+        <h2 class="header">Array Operations</h2>
+        <input type="text" id="txt" value="" onfocus="error()" >
+
+        <div class="btnDiv" style="display: flex;">
+            <input type="button" class="btn"  value="push" onclick="operations(this.value)">
+            <input type="button" class="btn"  value="pop" onclick="operations(this.value)">
+            <input type="button" class="btn"  value="unshift" onclick="operations(this.value)">
+            <input type="button" class="btn"  value="shift" onclick="operations(this.value)">
+            <input type="button" class="btn"  value="sort" onclick="operations(this.value)">
+        </div>
+
+        <table id="calc">
+            <div class="calcSum" >
+                <tr> 
+                    <td> Sum </td>
+                    <td> <input type="text" id="sumTxt" value=""  onfocus="error()"></td>
+                </tr>
+            </div>
+
+            <div class="calcMult">
+                <tr> 
+                    <td> Multiplication </td>
+                    <td> <input type="text" id="multTxt" value="" onfocus="error()"></td>
+                </tr>
+            </div>
+
+            <div class="calcAvg">
+                <tr> 
+                    <td> Average </td>
+                    <td> <input type="text" id="avgTxt" value="" onfocus="error()"></td>
+                </tr>
+            </div>
+
+            
+        </table>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var arr = [];
+        var count = 0;
+        var input = document.getElementById('txt');
+        var sumTxt = document.getElementById('sumTxt');
+        var multTxt = document.getElementById('multTxt');
+        var avgTxt = document.getElementById('avgTxt');
+
+        const operations = (opBtn)=>{
+            console.log(opBtn)
+            const txtBox = document.getElementById('txt');
+
+            if(opBtn === "push"){
+                let isNum = prompt("Enter number do you want to push");
+                let pattern = "^[0-9]{1,}.{0,1}[0-9]{1,}$";
+                let rg = RegExp(pattern);
+
+                if(rg.test(isNum)){
+                    arr.push(isNum);
+                    txt.value = arr;
+                    count++;
+                    console.log("push",count)
+                    sumTxt.value = calcSum(...arr).toFixed(2);
+                    multTxt.value = calcMult(...arr).toFixed(2);
+                    avgTxt.value = (calcSum(...arr)/count).toFixed(2);
+                }
+                else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Enter Digits Only!',
+                    })
+                }
+            }
+
+            if(opBtn === "unshift"){
+                let isNum = prompt("Enter number do you want to push");
+                let pattern = "^[0-9]{1,}.{0,1}[0-9]{1,}$";
+                let rg = RegExp(pattern);
+
+                if(rg.test(isNum)){
+                    arr.unshift(isNum);
+                    txt.value = arr;
+                    count++;
+                    console.log("unshift",count)
+                    sumTxt.value = calcSum(...arr).toFixed(2);
+                    multTxt.value = calcMult(...arr).toFixed(2);
+                    avgTxt.value = (calcSum(...arr)/count).toFixed(2);
+                }
+                else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Enter Digits Only!'
+                    }) 
+                }
+            }
+
+            if(opBtn === "pop"){
+                if(txt.value === ""){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Array is Empty, Please Enter Digits First!'
+                    })
+                    return;
+                }
+                else{
+                    arr.pop();
+                    txt.value = arr;
+                    count--;
+                    console.log("pop",count)
+                    sumTxt.value = calcSum(...arr).toFixed(2);
+                    multTxt.value = calcMult(...arr).toFixed(2);
+                    avgTxt.value = (calcSum(...arr)/count).toFixed(2);
+
+                    if(count == 0){
+                        sumTxt.value = "";
+                        multTxt.value = "";
+                        avgTxt.value = "";
+                    }
+                }
+            }
+
+            if(opBtn === "shift"){
+                if(txt.value === ""){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Array is Empty, Please Enter Digits First!'
+                    })
+                    return;
+                }
+                else{
+                    arr.shift();
+                    txt.value = arr;
+                    count--;
+                    console.log("shift",count)
+                    sumTxt.value = calcSum(...arr).toFixed(2);
+                    multTxt.value = calcMult(...arr).toFixed(2);
+                    avgTxt.value = (calcSum(...arr)/count).toFixed(2);
+                    
+                    if(count == 0){
+                        sumTxt.value = "";
+                        multTxt.value = "";
+                        avgTxt.value = "";
+                    }
+                }
+            }
+
+            if(opBtn === "sort"){
+                if(txt.value === ""){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Array is Empty, Please Enter Digits First!'
+                    })
+                }
+                else{
+                    arr.sort( (a,b) => a-b );
+                    txt.value = arr;
+                }
+            }
+
+        }
+
+        function calcSum(...arr){
+            var ans = 0;
+
+            for(val of arr){
+                ans += Number.parseFloat(val);
+            }
+            return Number.parseFloat(ans);
+        }
+
+        function calcMult(...arr){
+            var ans = 1;
+
+            for(val of arr){
+                ans *= Number.parseFloat(val);
+            }
+            return Number.parseFloat(ans);
+        }
+
+        function error(){
+            console.log(input.onfocus);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You are unable to change the values!'
+            })
+        }
+    </script>
+</body>
+</html>
